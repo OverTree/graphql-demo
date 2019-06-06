@@ -1,0 +1,40 @@
+module.exports = `
+    input ArticleInput{ 
+        name: String!
+        author: String!
+        content: String!
+        authType: Int
+        point: Int
+        price: Float
+    }
+
+    type Admin{
+        id: Int
+    }
+
+    type Article {
+        id: ID!
+        name: String
+        author: String
+        pv: Int,
+        uv: Int,
+        content: String
+        authType: Int
+        point: Int
+        price: Float
+        adminId: ID
+        admin: Admin
+        articleCategoryId: ID
+    }
+
+    type Query {
+        getArticle(id: ID!): Article
+        getArticleBatch( ids:[ID] ): [Article]
+    }
+
+    type Mutation {
+        createArticle(input: ArticleInput): Article
+        updateArticle(id: ID!, input: ArticleInput): Article
+        deleteArticle(id: ID!): Article
+    }
+`
